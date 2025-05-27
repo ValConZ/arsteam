@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AR.js - Marcador Hiro</title>
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.4.0/dist/aframe-master.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>AR con Marcador Hiro</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background-color: #000;
+        }
+    </style>
 </head>
-<body style="margin: 0; overflow: hidden;">
+<body>
     <a-scene 
         vr-mode-ui="enabled: false"
-        renderer="logarithmicDepthBuffer: true;"
-        embedded 
-        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-    >
-        <!-- Marcador Hiro -->
-        <a-marker type="pattern" url="https://raw.githack.com/AR-js-org/AR.js/master/aframe/data/data/patt.hiro">
-            <a-plane 
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/1200px-SMPTE_Color_Bars.svg.png"
-                width="1"
-                height="0.75"
-                position="0 0.5 0"
+        embedded
+        arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+        renderer="logarithmicDepthBuffer: true;">
+        <a-marker 
+            type="pattern" 
+            url="https://raw.githack.com/AR-js-org/AR.js/master/aframe/data/data/patt.hiro"
+            preset="hiro">
+            <a-image 
+                src="https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_640.jpg"
+                width="2"
+                height="1.5"
+                position="0 1 0"
                 rotation="-90 0 0"
-            ></a-plane>
-        </a-marker>
+            ></a-image>
         <a-entity camera></a-entity>
     </a-scene>
 </body>
