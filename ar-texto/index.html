@@ -13,25 +13,18 @@
     </style>
 </head>
 <body>
-    <!-- Escena AR.js -->
     <a-scene embedded arjs="trackingMethod: best; debugUIEnabled: false;" vr-mode-ui="enabled: false">
-        
-        <!-- Marcador Hiro -->
         <a-marker type="pattern" preset="hiro">
-            <!-- Texto fijo en realidad aumentada -->
             <a-entity position="0 0.1 0" rotation="0 0 0">
                 <a-text 
-                    value="Texto en AR" 
-                    color="#74d91c" 
-                    align="center" 
-                    width="1.5"
-                    position="0 0.1 0"
+                    value="Texto en AR.js" 
+                    color="black" 
+                    align="center"
+                    position="0 1 0"
                     rotation="-90 0 0">
                 </a-text>
             </a-entity>
         </a-marker>
-        
-        <!-- Cámara -->
         <a-entity camera></a-entity>
     </a-scene>
     
