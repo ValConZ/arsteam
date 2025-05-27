@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realidad Aumentada con Marcador Hiro</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            padding: 10px;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;' vr-mode-ui="enabled: false">
+        <a-marker type='pattern' url='https://raw.githack.com/AR-js-org/AR.js/master/aframe/data/data/patt.hiro' smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="5">
+            <a-image src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/1200px-SMPTE_Color_Bars.svg.png" 
+                     width="1.0" 
+                     height="0.75" 
+                     position="0 0.5 0"
+                     rotation="-90 0 0">
+            </a-image>
+            <a-text value="Marcador Hiro detectado" 
+                    color="black" 
+                    align="center" 
+                    position="0 1.2 0" 
+                    scale="1.5 1.5 1.5">
+            </a-text>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+    
+    <div class="instructions">
+        <h2>Instrucciones:</h2>
+        <p>1. Imprime el marcador Hiro (puedes encontrarlo en: https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png)</p>
+        <p>2. Permite el acceso a la cámara cuando el navegador lo solicite</p>
+        <p>3. Apunta la cámara hacia el marcador Hiro impreso</p>
+        <p>4. Deberías ver una imagen aparecer sobre el marcador</p>
+    </div>
+</body>
+</html>
