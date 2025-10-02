@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgb(120, 167, 212);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ body {
 .buttons {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgb(120, 167, 212);
     border-radius: 24px;
     padding: 40px;
     display: flex;
@@ -39,7 +39,7 @@ h1 {
     font-weight: 700;
     text-align: center;
     margin-bottom: 24px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: rgb(120, 167, 212);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -55,7 +55,7 @@ table {
 }
 
 thead {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: rgb(120, 167, 212);
 }
 
 th {
@@ -84,7 +84,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    background: rgb(120, 167, 212);
     transform: translateY(-1px);
 }
 
@@ -115,7 +115,7 @@ a {
     display: inline-block;
     text-decoration: none;
     color: white;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: rgb(120, 167, 212);
     padding: 10px 20px;
     border-radius: 8px;
     font-weight: 500;
@@ -153,7 +153,7 @@ a:active {
 
 .line {
     width: 2px;
-    background: linear-gradient(to bottom, transparent, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3), transparent);
+    background: rgb(120, 167, 212);
     border: none;
     border-radius: 1px;
     align-self: stretch;
@@ -170,7 +170,7 @@ a:active {
     .line {
         height: 2px;
         width: 100%;
-        background: linear-gradient(to right, transparent, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3), transparent);
+        background: rgb(120, 167, 212);
         margin: 10px 0;
     }
     
