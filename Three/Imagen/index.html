@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <title>AR Imagen 3D</title>
+  <title>AR 3D Image</title>
 
   <style>
     body { margin: 0; overflow: hidden; font-family: Monospace; }
@@ -26,8 +26,8 @@
 
 <body>
   <div id="error">
-    <h3>Error al cargar archivos</h3>
-    <p>Verifica que los siguientes archivos existan:</p>
+    <h3>Error loading files</h3>
+    <p>Please check that the following files exist:</p>
     <ul>
       <li>js/three.js</li>
       <li>jsartoolkit5/artoolkit.min.js</li>
@@ -41,7 +41,7 @@
       const script = document.createElement('script');
       script.src = src;
       script.onload = resolve;
-      script.onerror = () => reject(new Error(`Error cargando ${src}`));
+      script.onerror = () => reject(new Error(`Error loading ${src}`));
       document.head.appendChild(script);
     });
   }
@@ -51,7 +51,7 @@
       await loadScript('three/three.js');
       
       if (typeof THREE === 'undefined') {
-        throw new Error('THREE.js no se cargó correctamente');
+        throw new Error('THREE.js not loaded correctly');
       }
       
       await loadScript('jsartoolkit5/artoolkit.min.js');

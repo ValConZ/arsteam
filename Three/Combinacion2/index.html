@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>AR Completo - Modelo 3D, Imagen y Audio</title>
+    <title>AR Complete - 3D Model, Image, and Sound</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
     <script src="dist/THREEAR.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r101/examples/js/loaders/GLTFLoader.js"></script>
@@ -136,12 +136,12 @@
 <body>
     <div id="loadingOverlay">
         <div id="loadingSpinner"></div>
-        <div id="loadingText">Cargando Experiencia AR</div>
-        <div id="loadingProgress">Preparando componentes...</div>
+        <div id="loadingText">Loading AR Experience</div>
+        <div id="loadingProgress">Preparing components...</div>
         <div id="loadingChecklist">
-            <div class="loading-item" id="audioStatus">Inicializando audio</div>
-            <div class="loading-item" id="imageStatus">Cargando imagen</div>
-            <div class="loading-item" id="modelStatus">Cargando modelo 3D</div>
+            <div class="loading-item" id="audioStatus">Initializing audio</div>
+            <div class="loading-item" id="imageStatus">Loading image</div>
+            <div class="loading-item" id="modelStatus">Loading 3D model</div>
         </div>
     </div>
 
@@ -150,15 +150,15 @@
     </audio>
     
     <div id="info">
-        <h3>AR Completo</h3>
-        <p>Apunta la cámara al marcador Hiro</p>
-        <p id="status">Inicializando...</p>
+        <h3>AR Complete</h3>
+        <p>Point the camera at the Hiro marker</p>
+        <p id="status">Initializing...</p>
     </div>
     
     <div id="error"></div>
     
     <div id="audioInfo">
-        <p>🔊 Audio reproduciendo</p>
+        <p>🔊 Sound playing</p>
     </div>
 
     <script>
@@ -183,7 +183,7 @@
         function updateLoadingProgress() {
             var completedCount = Object.values(loadingStatus).filter(Boolean).length;
             var progressText = document.getElementById('loadingProgress');
-            progressText.textContent = `${completedCount}/3 componentes cargados`;
+            progressText.textContent = `${completedCount}/3 components loaded`;
             
             if (loadingStatus.audio && loadingStatus.image && loadingStatus.model) {
                 setTimeout(() => {
@@ -266,19 +266,19 @@
                     gltfModel.rotation.x = -100 * Math.PI / 180;
                     
                     markerGroup.add(gltfModel);
-                    
-                    statusElement.textContent = 'Modelo 3D cargado';
-                    console.log('Modelo GLTF cargado exitosamente');
+
+                    statusElement.textContent = '3D Model loaded';
+                    console.log('GLTF model loaded successfully');
                     markAsCompleted('model');
                 },
                 function(xhr) {
                     if (xhr.total > 0) {
                         var porcentaje = (xhr.loaded / xhr.total * 100).toFixed(2);
-                        statusElement.textContent = 'Cargando modelo: ' + porcentaje + '%';
+                        statusElement.textContent = 'Loading model: ' + porcentaje + '%';
                     }
                 },
                 function(error) {
-                    console.error('Error al cargar el modelo:', error);
+                    console.error('Error loading model:', error);
                     cargarModeloRespaldo();
                     markAsCompleted('model');
                 }
@@ -327,7 +327,7 @@
             cube.position.set(-0.5, 0.2, 0);
             markerGroup.add(cube);
             
-            statusElement.textContent = 'Usando modelo de respaldo';
+            statusElement.textContent = 'Using fallback model';
         }
 
         function cargarImagenRespaldo() {
@@ -391,18 +391,18 @@
             controller.trackMarker(patternMarker);
             
             controller.addEventListener('markerFound', function(event) {
-                console.log('Marcador encontrado');
+                console.log('Marker found');
                 markerDetected = true;
-                statusElement.textContent = 'Marcador detectado - Contenido activo';
+                statusElement.textContent = 'Marker detected - Content active';
                 statusElement.style.backgroundColor = 'rgba(0, 255, 0, 0.7)';
                 
                 playAudio();
             });
             
             controller.addEventListener('markerLost', function(event) {
-                console.log('Marcador perdido');
+                console.log('Marker lost');
                 markerDetected = false;
-                statusElement.textContent = 'Buscando marcador Hiro...';
+                statusElement.textContent = 'Looking for Hiro marker...';
                 statusElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
                 pauseAudio();
             });
@@ -425,8 +425,8 @@
             });
             
         }).catch(function(error) {
-            console.error('Error al inicializar AR:', error);
-            errorElement.innerHTML = '<h3>Error al inicializar AR</h3><p>' + error.message + '</p><p>Verifica que tengas:</p><ul><li>Cámara web funcional</li><li>Archivos THREEAR.js en dist/</li><li>Archivo patt.hiro en data/</li></ul>';
+            console.error('Error initializing AR:', error);
+            errorElement.innerHTML = '<h3>Error initializing AR</h3><p>' + error.message + '</p><p>Check that you have:</p><ul><li>Functional webcam</li><li>THREEAR.js files in dist/</li><li>patt.hiro file in data/</li></ul>';
             errorElement.style.display = 'block';
             document.getElementById('loadingOverlay').style.display = 'none';
         });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>AR con Modelo GLTF, Marcador Hiro y Audio</title>
+    <title>AR with GLTF Model, Hiro Marker and Audio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
     <script src="dist/THREEAR.js"></script>
     
@@ -59,7 +59,7 @@
     <div id="error"></div>
     
     <div id="audioInfo">
-        <p>🔊 Audio activo</p>
+        <p>🔊 Sound active</p>
     </div>
 
     <script>
@@ -134,8 +134,8 @@
             markerGroup.add(torus);
             
             initializeAudio();
-            
-            statusElement.textContent = 'Usando geometría de respaldo. Busca el marcador Hiro...';
+
+            statusElement.textContent = 'Using fallback geometry. Look for the Hiro marker...';
         }
         
         function playAudio() {
@@ -216,7 +216,7 @@
             
         }).catch(function(error) {
             console.error('Error al inicializar AR:', error);
-            errorElement.textContent = 'Error al inicializar AR: ' + error.message;
+            errorElement.textContent = 'Error to initialize AR: ' + error.message;
             errorElement.style.display = 'block';
         });
         

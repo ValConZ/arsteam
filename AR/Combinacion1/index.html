@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>AR Completo - Modelo 3D, Texto y Audio</title>
+    <title>AR Complete - 3D Model, Text and Sound</title>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <style>
@@ -47,7 +47,7 @@
     </style>
 </head>
 <body>
-    <div id="status" class="searching">Buscando marcador Hiro...</div>
+    <div id="status" class="searching">Searching Hiro marker...</div>
     
     <a-scene embedded arjs="trackingMethod: best; debugUIEnabled: false;" vr-mode-ui="enabled: false">
         <a-assets>
@@ -66,7 +66,7 @@
                 
                 <a-text 
                     id="arText"
-                    value="Corazon" 
+                    value="Heart" 
                     color="#FF0000" 
                     align="center"
                     position="0 1.5 0"
@@ -96,8 +96,8 @@
         let isMarkerVisible = false;
 
         marker.addEventListener('markerFound', function() {
-            console.log('Marcador encontrado');
-            statusElement.textContent = '✓ Marcador detectado - Experiencia AR activa';
+            console.log('Marker found');
+            statusElement.textContent = '✓ Marker found - AR experience active';
             statusElement.className = 'found';
             isMarkerVisible = true;
             
@@ -115,8 +115,8 @@
         });
 
         marker.addEventListener('markerLost', function() {
-            console.log('Marcador perdido');
-            statusElement.textContent = 'Buscando marcador Hiro...';
+            console.log('Marker lost');
+            statusElement.textContent = 'Searching Hiro marker...';
             statusElement.className = 'searching';
             isMarkerVisible = false;
             

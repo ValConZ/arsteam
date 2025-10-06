@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>AR Completo: Modelo GLTF + Texto 3D + Audio</title>
+    <title>AR Complete: GLTF Model + 3D Text + Sound</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
     <script src="dist/THREEAR.js"></script>
@@ -142,34 +142,34 @@
 <body>
     <div id="loadingScreen">
         <div id="loadingSpinner"></div>
-        <div id="loadingTitle">Cargando Sistema AR</div>
-        <div id="loadingStatus">Inicializando componentes...</div>
+        <div id="loadingTitle">Loading AR System</div>
+        <div id="loadingStatus">Initializing components...</div>
         <ul id="loadingChecklist">
-            <li id="audioCheck">Audio inicializado correctamente</li>
-            <li id="modelCheck">Modelo GLTF cargado</li>
-            <li id="textCheck">Texto 3D creado</li>
+            <li id="audioCheck">Audio initialized successfully</li>
+            <li id="modelCheck">GLTF model loaded</li>
+            <li id="textCheck">3D text created</li>
         </ul>
     </div>
 
     <audio loop id="modelAudio" preload="auto" style="display: none">
         <source src="assets/latidos.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio HTML5.
+        Your browser does not support HTML5 audio.
     </audio>
     
     <div id="info">
-        <h3>AR Completo - Marcador Hiro</h3>
-        <p>Apunta la cámara al marcador Hiro</p>
-        <p id="status">Inicializando...</p>
+        <h3>AR Complete - Hiro Marker</h3>
+        <p>Point the camera at the Hiro marker</p>
+        <p id="status">Initializing...</p>
     </div>
     
     <div id="error"></div>
     
     <div id="audioInfo">
-        <p>🔊 Audio reproduciéndose</p>
+        <p>🔊 Sound playing</p>
     </div>
     
     <div id="instructions">
-        <p>Toca la pantalla para activar audio</p>
+        <p>Tap the screen to activate sound</p>
     </div>
 
     <script>
@@ -271,16 +271,16 @@
 
                     markerGroup.add(gltfModel);
                     
-                    statusElement.textContent = 'Modelo 3D cargado exitosamente';
+                    statusElement.textContent = '3D Model loaded successfully';
                     console.log('Modelo GLTF cargado');
                     updateLoadingStatus('model');
                 },
                 function(xhr) {
                     var porcentaje = (xhr.loaded / xhr.total * 100).toFixed(2);
-                    statusElement.textContent = 'Cargando modelo: ' + porcentaje + '%';
+                    statusElement.textContent = 'Loading model: ' + porcentaje + '%';
                 },
                 function(error) {
-                    console.error('Error al cargar modelo:', error);
+                    console.error('Error loading model:', error);
                     cargarGeometriaRespaldo();
                 }
             );
@@ -292,8 +292,8 @@
             var backup = new THREE.Mesh(geometry, material);
             backup.position.set(0, -0.5, 0);
             markerGroup.add(backup);
-            
-            statusElement.textContent = 'Usando geometría de respaldo';
+
+            statusElement.textContent = 'Using backup geometry';
             updateLoadingStatus('model');
         }
         
@@ -301,7 +301,7 @@
             var fontLoader = new THREE.FontLoader();
             
             fontLoader.load('fonts/helvetiker_regular.typeface.json', function(font) {
-                var textGeometry = new THREE.TextGeometry('Corazon', {
+                var textGeometry = new THREE.TextGeometry('Heart', {
                     font: font,
                     size: 0.15,
                     height: 0.05,
@@ -419,7 +419,7 @@
             controller.addEventListener('markerFound', function(event) {
                 console.log('Marcador encontrado');
                 markerDetected = true;
-                statusElement.textContent = 'Marcador detectado - Contenido AR activo';
+                statusElement.textContent = 'Marker detected - AR content active';
                 statusElement.style.backgroundColor = 'rgba(0, 255, 0, 0.7)';
                 
                 playAudio();
@@ -428,7 +428,7 @@
             controller.addEventListener('markerLost', function(event) {
                 console.log('Marcador perdido');
                 markerDetected = false;
-                statusElement.textContent = 'Buscando marcador Hiro...';
+                statusElement.textContent = 'Look for the Hiro marker...';
                 statusElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
                 pauseAudio();
             });
@@ -450,11 +450,11 @@
                 renderer.render(scene, camera);
             });
             
-            statusElement.textContent = 'Sistema AR listo - Busca el marcador Hiro';
+            statusElement.textContent = 'AR system ready - Look for the Hiro marker';
             
         }).catch(function(error) {
-            console.error('Error al inicializar AR:', error);
-            errorElement.textContent = 'Error al inicializar sistema AR: ' + error.message;
+            console.error('Error initializing AR:', error);
+            errorElement.textContent = 'Error initializing AR system: ' + error.message;
             errorElement.style.display = 'block';
         });
         
@@ -463,8 +463,8 @@
         });
         
         window.addEventListener('error', function(event) {
-            console.error('Error global:', event);
-            errorElement.textContent = 'Error en la aplicación: ' + event.message;
+            console.error('Global error:', event);
+            errorElement.textContent = 'Application error: ' + event.message;
             errorElement.style.display = 'block';
         });
     </script>

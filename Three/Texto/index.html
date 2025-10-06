@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <title>AR Texto 3D</title>
+  <title>AR 3D Text</title>
 
   <script src="js/three.js"></script>
   <script src="js/loaders/FontLoader.js"></script>
@@ -66,7 +66,7 @@
 
     const fontLoader = new THREE.FontLoader();
     fontLoader.load('fonts/helvetiker_regular.typeface.json', font => {
-      const textGeo = new THREE.TextGeometry('Ejemplo con Three.js', {
+      const textGeo = new THREE.TextGeometry('Example with Three.js', {
         font: font,
         size: 0.2,
         height: 0.1,
