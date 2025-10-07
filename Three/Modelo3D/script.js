@@ -45,16 +45,16 @@ function loadGLTFModel(modelPath) {
             
             markerGroup.add(gltfModel);
             
-            statusElement.textContent = 'Modelo cargado. Busca el marcador Hiro...';
-            console.log('Modelo GLTF cargado exitosamente');
+            statusElement.textContent = 'Model loaded. Searching for Hiro marker...';
+            console.log('Model GLTF loaded successfully');
         },
         function(xhr) {
             var porcentaje = (xhr.loaded / xhr.total * 100).toFixed(2);
-            statusElement.textContent = 'Cargando modelo: ' + porcentaje + '%';
+            statusElement.textContent = 'Loading model: ' + porcentaje + '%';
         },
         function(error) {
-            console.error('Error al cargar el modelo:', error);
-            errorElement.textContent = 'Error al cargar el modelo GLTF: ' + error.message;
+            console.error('Error loading model:', error);
+            errorElement.textContent = 'Error loading GLTF model: ' + error.message;
             errorElement.style.display = 'block';
             
             cargarGeometriaRespaldo();
@@ -68,8 +68,8 @@ function cargarGeometriaRespaldo() {
     var torus = new THREE.Mesh(geometry, material);
     torus.position.y = 0;
     markerGroup.add(torus);
-    
-    statusElement.textContent = 'Usando geometría de respaldo. Busca el marcador Hiro...';
+
+    statusElement.textContent = 'Using fallback geometry. Searching for Hiro marker...';
 }
 
 var source = new THREEAR.Source({ renderer: renderer, camera: camera });
@@ -87,14 +87,14 @@ THREEAR.initialize({ source: source, lostTimeout: 1000 }).then((controller) => {
     controller.trackMarker(patternMarker);
     
     controller.addEventListener('markerFound', function(event) {
-        console.log('Marcador encontrado', event);
-        statusElement.textContent = 'Marcador detectado - Mostrando modelo';
+        console.log('Marker found', event);
+        statusElement.textContent = 'Marker detected - Showing model';
         statusElement.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
     });
     
     controller.addEventListener('markerLost', function(event) {
-        console.log('Marcador perdido', event);
-        statusElement.textContent = 'Buscando marcador...';
+        console.log('Marker lost', event);
+        statusElement.textContent = 'Searching for marker...';
         statusElement.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     });
     
@@ -116,8 +116,8 @@ THREEAR.initialize({ source: source, lostTimeout: 1000 }).then((controller) => {
     });
     
 }).catch(function(error) {
-    console.error('Error al inicializar AR:', error);
-    errorElement.textContent = 'Error al inicializar AR: ' + error.message;
+    console.error('Error initializing AR:', error);
+    errorElement.textContent = 'Error initializing AR: ' + error.message;
     errorElement.style.display = 'block';
 });
 
